@@ -22,6 +22,11 @@ output "az_ngw_ids" {
   description = "Map of AZ names to NAT Gateway IDs (only for public subnets)"
 }
 
+output "az_subnet_ids_list" {
+  value = coalescelist(aws_subnet.private.*.id, aws_subnet.public.*.id)
+  description = "Map of AZ names to NAT Gateway IDs (only for public subnets)"
+}
+
 output "az_ngw_private_ips" {
   value = aws_eip.public.*.private_ip
   description = "Map of AZ names to NAT Gateway IDs (only for public subnets)"
