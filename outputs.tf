@@ -22,6 +22,11 @@ output "az_ngw_ids" {
   description = "Map of AZ names to NAT Gateway IDs (only for public subnets)"
 }
 
+output "az_ngw_private_ips" {
+  value = aws_eip.public.*.private_ip
+  description = "Map of AZ names to NAT Gateway IDs (only for public subnets)"
+}
+
 output "az_subnet_arns" {
   value = zipmap(
     var.availability_zones,
